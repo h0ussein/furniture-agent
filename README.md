@@ -1,53 +1,41 @@
-# 🛋️ وكيل الأثاث الذكي
+ # Furniture AI Agent
 
-AI chatbot بيساعد عملاء شركات الأثاث يلاقوا المنتج المناسب — بالعربي.
+An AI-powered furniture sales assistant that automates customer inquiries by providing product recommendations, pricing, and images in Arabic instantly.
+
+## Problem & Solution
+
+Furniture companies spend significant resources answering repetitive inquiries regarding product availability, pricing, and visuals. This agent automates the entire discovery process through a conversational Arabic chat interface. Customers describe their needs, and the system instantly returns matching product names, descriptions, pricing, and inline images.
+
+## Core Features
+
+* **Native Arabic Support:** Optimized for natural conversations in local Arabic dialects.
+* **Dynamic Catalog:** Powered by Google Sheets (via CSV), allowing real-time inventory updates without code changes.
+* **Low-Latency Responses:** Utilizes Groq's LPU inference engine for near-instant replies.
+* **Inline Product Media:** Renders product images directly inside the chat interface.
+* **Premium Responsive UI:** Mobile-first design tailored to high-end brand aesthetics.
 
 ## Tech Stack
-- React + Vite
-- Groq API (llama3-8b-8192)
-- Google Sheets (CSV) — كتالوج المنتجات
-- ImageKit — صور المنتجات
-- Vercel — deployment
 
-## إعداد المشروع
+* **Frontend:** React 18, Vite, TailwindCSS
+* **LLM Engine:** Groq API (`llama-3.3-70b-versatile`)
+* **Data Storage:** Google Sheets (CSV Export)
+* **Media CDN:** ImageKit
+* **Hosting:** Vercel
 
-### 1. نسخ المشروع وتثبيت الـ packages
-```bash
-npm install
+## Architecture Flow
+
+```
+User Message ➔ React Chat UI ➔ Groq API (System Prompt + Sheet Catalog) ➔ AI Response with Images
+
 ```
 
-### 2. إعداد متغيرات البيئة
-```bash
-cp .env.example .env
-```
-افتح `.env` وحط قيمك:
-```
-VITE_GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxxxxxx
-VITE_SHEET_CSV_URL=https://docs.google.com/...
-```
+## Getting Started
 
-### 3. تشغيل محلياً
-```bash
-npm run dev
-```
+### Prerequisites
 
-## Deploy على Vercel
+* Node.js 18+
+* Groq API Key
 
-1. ارفع المشروع على GitHub
-2. ربط الـ repo بـ Vercel
-3. في إعدادات Vercel → Environment Variables، أضف:
-   - `VITE_GROQ_API_KEY` = مفتاحك
-   - `VITE_SHEET_CSV_URL` = رابط الـ CSV
 
-## هيكل الملفات
-```
-src/
-├── hooks/
-│   ├── useCatalog.js   # جلب بيانات الـ Sheet
-│   └── useGroq.js      # التواصل مع Groq API
-├── components/
-│   ├── MessageBubble.jsx
-│   └── ProductCard.jsx
-├── App.jsx
-└── App.css
-```
+## Author
+**Hussein Ibrahim** — AI Engineer
